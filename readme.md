@@ -9,16 +9,18 @@ Git团队培训材料整理。
 - [为什么开始使用 Git 版本管理，Git VS Svn 有哪些区别？](why-git.md)
 - [工具篇](git-tools.md) Git协作开发使用到的工具、服务总结
 - [入门篇](primer.md) 从初始化、commit、push、pull到branch、tag的一个基本流程
+- [Pro Git v2 中文版](https://git-scm.com/book/zh/v2) Git 学习参考权威
+
 ## 协作开发
 
-### 分支与合并
+### 工作流实践
 - [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) 介绍日常推荐的分支开发模型，基于此模型可以通过这个小游戏来进行学习 [Learn Git Branch](http://pcottle.github.io/learnGitBranching/)
 - [Git工作流指南](https://github.com/xirong/my-git/blob/master/git-workflow-tutorial.md)完整的对比目前使用的集中式（Svn）工作流、功能分支工作流、Gitflow 工作流、Forking 工作流、Pull Request 等几种不同的模式，通俗易懂，强烈推荐看一看，如果觉的排版不好，请查看原分页文章 [Git-workflow-translations](https://github.com/oldratlee/translations/tree/master/git-workflows-and-tutorials)
 - 熟悉的工作流后，你是否也想要在 Github 上与他人一起协同工作？那么问题来了，[Github全程指南-如何高效使用？](how-to-use-github.md)
 - [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/index.html) This guide explains how and why GitHub Flow works 简单实用，更好的理解Github的模式。
 - [Github 协同开发流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html) 图片很赞，简洁易懂。
 
-### Gerrit
+### Gerrit - 代码评审实践
 代码评审相关
 
 ## Git进阶
@@ -28,18 +30,6 @@ Git团队培训材料整理。
 - [Git Submodule 的一些注意事项](http://blog.devtang.com/blog/2013/05/08/git-submodule-issues/) 一些需要理解并注意的操作
 
 ## 参考资料
-
-
-### Git 客户端
-
-Mac 和 Linux 系统推荐使用终端即可，Git 一开始的命令的确很多，别无它法，熟能生巧，多练习即可能够掌握日常使用的一些名利，再配合[`常用命令的alias`](https://git-scm.com/book/tr/v2/Git-Basics-Git-Aliases)或者强大的 [`zsh 终端`](http://www.ixirong.com/2015/04/27/strong-bash-use-oh-my-zsh/)都能显著的提升效率，当然如果非得寻找图形化客户端，也不是没有；Windows下还是尽快熟悉客户端的使用吧，因为win下面的bash太难用了：
-
-- [GUI Clients](https://git-scm.com/downloads/guis) 官方推荐图形客户端，罗列的包括了Mac、Windows、Linux下的客户端，免费及付费的都有，你可以在这里面挑选一个就ok。
-- [Git for windows](https://msysgit.github.io/) 针对 Window 系统发布的客户端，集成了 Shell 窗口，方便在 Win 下面使用命令操作。
-- [TortoiseGit - The coolest Interface to Git Version Control](https://code.google.com/p/tortoisegit/) 在window下使用git，那就不得不提“乌龟”，安装了 Tortoise 后，右键图形化操作根本分辨不出来哪是 Git，哪是 Svn，很方便使用 Svn 的用户过度过来。
-- [Tower2](http://www.git-tower.com/) 号称最好的 Git 客户端，只有 Mac 版本，收费，集成 Github、Gitlab、Xcode等服务。
-- [SourceTree](https://www.sourcetreeapp.com/) 免费，功能齐全，Mac+Window 版本，集成 Github 等服务。
-- [SmartGit](http://www.syntevo.com/smartgit/) 非商业用途免费，全平台支持，集成 Github服务。内置 SSH client ，文件比较与合并工具。
 
 ### Git 使用技巧
 - [Git flow 工具](https://github.com/petervanderdoes/gitflow)
