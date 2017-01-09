@@ -7,8 +7,8 @@ Git团队培训材料整理。
 
 ## Git基础
 - [为什么开始使用 Git 版本管理，Git VS Svn 有哪些区别？](why-git.md)
-- [开篇：一篇适合入门学习git的资料汇总](ixirong.com.md) 本人的拙笔，欢迎吐槽！
-
+- [工具篇](git-tools.md) Git协作开发使用到的工具、服务总结
+- [入门篇](primer.md) 从初始化、commit、push、pull到branch、tag的一个基本流程
 ## 协作开发
 
 ### 分支与合并
