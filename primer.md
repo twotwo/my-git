@@ -30,16 +30,24 @@
 
 ## 提交与分支
 
-*内容提交*
+*提交*
 ### git status
 
 	$ git status
 		modified:   primer.md
 
-### git add
-$ git add primer.md
-	
+### git add & git commit
 
+	$ git add primer.md
+	$ git commit -m "update primer.md"
+	[master 85c4f11] update primer.md
+	 1 file changed, 24 insertions(+), 7 deletions(-)
+	
+*分支*
+
+    ☞ 'git branch' is used to create and list branches
+    ☞ 'git checkout' is used to switch branches
+    ☞ 'git checkout -b' is used to create and then switch branches
 
 ## Pulling and pushing
 
