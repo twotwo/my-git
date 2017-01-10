@@ -1,27 +1,44 @@
 # Git 入门篇
 从账号配置，init、commit、push、pull到branch、tag的一个基本流程
 ## 账号配置
-参考[初次运行 Git 的配置](https://git-scm.com/book/zh/v2/起步-初次运行-Git-前的配置)
+参考1 [初次运行 Git 的配置](https://git-scm.com/book/zh/v2/起步-初次运行-Git-前的配置)
+
+参考2 [git 设置和取消代理](https://gist.github.com/laispace/666dd7b27e9116faece6)
 
 ### git config
-    $ git help config
-    $ git config --global user.name "twotwo"
-    $ git config --global user.email twotwo@li3huo.com
+	$ git help config
+
+	## Set Your Identity
+	$ git config --global user.name "twotwo"
+	$ git config --global user.email twotwo@li3huo.com
+
+	## Set/Unset Your Proxy: http&https
+	$ git config --global http.proxy 'socks5://127.0.0.1:1080'
+	$ git config --global --unset http.proxy
+
 
 ## 获取与创建项目
 参考[Git 获取与创建项目](https://git-scm.com/book/zh/v2/Git-命令-获取与创建项目)
 
 ### git init
-运行 git init 就可以将一个目录转变成一个 Git 仓库，这样就可以开始对它进行版本管理了
+*创建项目* 运行 git init 就可以将一个目录转变成一个 Git 仓库，这样就可以开始对它进行版本管理了
 
 ### git clone
+*获取项目*
 
-    $ git clone https://github.com/twotwo/learn-git.git
+	$ git clone https://github.com/twotwo/learn-git.git
 
 ## 提交与分支
-Committing and branching
 
+*内容提交*
+### git status
 
+	$ git status
+		modified:   primer.md
+
+### git add
+$ git add primer.md
+	
 
 
 ## Pulling and pushing
