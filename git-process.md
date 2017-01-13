@@ -1,7 +1,12 @@
-# Git 使用篇
+# Git 分支篇
 
-## 参考
-- [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html) @阮一峰 2015年8月5日
+Git 的分支模型是一个“Killing Feature”，它以一种难以置信的轻量方式处理分支，因此，鼓励在工作流程中频繁地使用分支与合并。
+理解和精通这一特性，你便会意识到 Git 是如此的强大而又独特，并且从此真正改变你的开发方式。
+
+## 需要掌握的概念
+- ☞ 为啥建分支这么快？ **分支本质上就是一个41字节的文件**
+- ☞ 为啥合并这么快？ **三方合并机制**
+- ☞ **本地的分支合并操作与远端的分支管理**
 
 ## Command List
 
@@ -14,6 +19,11 @@
 	☞ 'git checkout' is used to switch branches
 	☞ 'git checkout -b' is used to create and then switch branches
 
+### git fetch - 抓取远程仓库内容，放入本地库
+
+	☞ 'git fetch' fetches down all the information that is in that repository 
+	that is not in your current one and stores it in your local database
+
 ### git pull - 抓取远程仓库内容，合并入当前分支
 
 	☞ 'git pull' update for the repository cloned from, 
@@ -23,7 +33,7 @@
 
 	☞ 'git rebase' reapply commits on top of another base tip
 
-## Process
+## 举个例子
 
 ### 第一步：新建分支
 首先，每次开发新功能，都应该新建一个单独的分支（参考 [Git 分支管理](git-branch.md)）
@@ -76,8 +86,9 @@
 ### 第三步：与主干同步
 分支的开发过程中，要经常与主干保持同步
 
-	$ git fetch origin
-	$ git rebase origin/master
+	➜  my-git-fork git:(dev-li3huo) git fetch origin 
+	➜  my-git-fork git:(dev-li3huo) git rebase origin/master
+	Current branch dev-li3huo is up to date.
 
 ### 第四步：合并commit
 分支开发完成后，很可能有一堆commit，但是合并到主干的时候，往往希望只有一个（或最多两三个）commit，这样不仅清晰，也容易管理。
@@ -100,4 +111,26 @@ git push命令要加上force参数，因为rebase以后，分支历史改变了�
 
 提交到远程仓库以后，就可以发出 Pull Request 到master分支，然后请求别人进行代码review，确认可以合并到master
 
-(End)
+## 参考
+- 《Pro Git V2》 3. Git 分支
+	
+	* [3.1 分支简介](https://git-scm.com/book/zh/v2/Git-分支-分支简介) 分支的基本原理，建议掌握一下，否则估计会搞不懂下面的例子
+	* [3.2 新建与合并](https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并) 一个应用的例子
+	* [3.4 常见工作流介绍](https://git-scm.com/book/zh/v2/Git-分支-分支开发工作流) 
+
+		- `长期分支` 适用于对稳定性要求很高、复杂庞大的项目
+		- `特性分支` 短期分支，对任何规模的项目都适用 - Git 特有的工作流
+
+	* [3.5 远程分支](https://git-scm.com/book/zh/v2/Git-分支-远程分支) 远程分支的管理
+
+		- `跟踪分支` git checkout --track origin/remote_branch
+		- `拉取` pull == fetch + merge到跟踪分支
+		- `删除远程分支` git push origin --delete remote_branch
+
+	* [3.6 rebase](https://git-scm.com/book/zh/v2/Git-分支-变基) 一种更高级的合并方法，一下看不懂的可以放放；看不懂的时候尽量别用，滥用产生的副作用很大！
+
+		- 确保在向远程分支推送时能保持提交历史的整洁
+		- `变基的风险` 不要对在你的仓库外有副本的分支执行变基
+		- `变基 vs. 合并` 总的原则是，只对尚未推送或分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作，这样，你才能享受到两种方式带来的便利
+
+- [Github 跨 Repository 开发流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html) @阮一峰 2015年8月5日 没有远端版本库权限的一个开发流程
