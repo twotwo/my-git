@@ -83,33 +83,48 @@ Git 的分支模型是一个“Killing Feature”，它以一种难以置信的�
 
 第一行是不超过50个字的提要，然后空一行，罗列出改动原因、主要变动、以及需要注意的问题。最后，提供对应的网址（比如Bug ticket）
 
-### 第三步：与主干同步
+### 第三步：主干与远端同步
 分支的开发过程中，要经常与主干保持同步
 
-	➜  my-git-fork git:(dev-li3huo) git fetch origin 
-	➜  my-git-fork git:(dev-li3huo) git rebase origin/master
-	Current branch dev-li3huo is up to date.
+	➜  my-git-fork git:(dev-li3huo) ✗ git fetch
+	remote: Counting objects: 4, done.
+	remote: Compressing objects: 100% (1/1), done.
+	remote: Total 4 (delta 3), reused 4 (delta 3), pack-reused 0
+	Unpacking objects: 100% (4/4), done.
+	From https://github.com/twotwo/my-git-fork
+	   27177fd..934621e  master     -> origin/master 
 
-### 第四步：合并commit
+### 第四步：rebase dev-li3huo
 分支开发完成后，很可能有一堆commit，但是合并到主干的时候，往往希望只有一个（或最多两三个）commit，这样不仅清晰，也容易管理。
 
 那么，怎样才能将多个commit合并呢？这就要用到 git rebase 命令。
 
-	$ git rebase -i origin/master
+	➜  my-git-fork git:(dev-li3huo) git rebase master
+	Current branch dev-li3huo is up to date.
 
 git rebase命令的i参数表示互动（interactive），这时git会打开一个互动界面，进行下一步操作
 
-### 第五步：推送到远程仓库
+### 第五步：把 rebase的内容一次性的合并到主干
 
+	➜  my-git-fork git:(dev-li3huo) git checkout master
+	➜  my-git-fork git:(master) git merge dev-li3huo
+	
+
+### 第六步：合并后的主干推送到远程仓库
 合并commit后，就可以推送当前分支到远程仓库了
 
-    $ git push --force origin myfeature
+	➜  my-git-fork git:(master) git push -u origin master
+	Counting objects: 4, done.
+	Delta compression using up to 8 threads.
+	Compressing objects: 100% (4/4), done.
+	Writing objects: 100% (4/4), 824 bytes | 0 bytes/s, done.
+	Total 4 (delta 3), reused 0 (delta 0)
+	remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+	To https://github.com/twotwo/my-git-fork.git
+	   27177fd..934621e  master -> master
+	Branch master set up to track remote branch master from origin.
 
 git push命令要加上force参数，因为rebase以后，分支历史改变了，跟远程分支不一定兼容，有可能要强行推送
-
-### 第六步：发出Pull Request(Only for Github)
-
-提交到远程仓库以后，就可以发出 Pull Request 到master分支，然后请求别人进行代码review，确认可以合并到master
 
 ## 参考
 - 《Pro Git V2》 3. Git 分支
