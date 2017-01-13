@@ -108,23 +108,36 @@ git rebase命令的i参数表示互动（interactive），这时git会打开一�
 
 	➜  my-git-fork git:(dev-li3huo) git checkout master
 	➜  my-git-fork git:(master) git merge dev-li3huo
-	
+	Updating 27177fd..63ccd06
+	Fast-forward
+	 git-process.md | 151 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	 1 file changed, 151 insertions(+)
+	 create mode 100644 git-process.md
 
 ### 第六步：合并后的主干推送到远程仓库
 合并commit后，就可以推送当前分支到远程仓库了
 
 	➜  my-git-fork git:(master) git push -u origin master
-	Counting objects: 4, done.
-	Delta compression using up to 8 threads.
-	Compressing objects: 100% (4/4), done.
-	Writing objects: 100% (4/4), 824 bytes | 0 bytes/s, done.
-	Total 4 (delta 3), reused 0 (delta 0)
-	remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
 	To https://github.com/twotwo/my-git-fork.git
-	   27177fd..934621e  master -> master
-	Branch master set up to track remote branch master from origin.
+	 ! [rejected]        master -> master (non-fast-forward)
+	error: failed to push some refs to 'https://github.com/twotwo/my-git-fork.git'
+	hint: Updates were rejected because the tip of your current branch is behind
+	hint: its remote counterpart. Integrate the remote changes (e.g.
+	hint: 'git pull ...') before pushing again.
+	hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 git push命令要加上force参数，因为rebase以后，分支历史改变了，跟远程分支不一定兼容，有可能要强行推送
+
+	➜  my-git-fork git:(master) git push -u origin master --force
+	Counting objects: 12, done.
+	Delta compression using up to 8 threads.
+	Compressing objects: 100% (12/12), done.
+	Writing objects: 100% (12/12), 4.55 KiB | 0 bytes/s, done.
+	Total 12 (delta 7), reused 0 (delta 0)
+	remote: Resolving deltas: 100% (7/7), completed with 1 local objects.
+	To https://github.com/twotwo/my-git-fork.git
+	 + 934621e...63ccd06 master -> master (forced update)
+	Branch master set up to track remote branch master from origin.
 
 ## 参考
 - 《Pro Git V2》 3. Git 分支
